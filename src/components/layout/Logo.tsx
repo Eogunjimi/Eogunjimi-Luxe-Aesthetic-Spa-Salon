@@ -5,10 +5,7 @@ export function Logo({ light = false, className }: { light?: boolean; className?
   return (
     <Link to="/" className={cn("flex items-center gap-2.5 shrink-0", className)} aria-label="Luxe Aesthetics Spa Saloon home">
       <span
-        className={cn(
-          "flex h-10 w-10 items-center justify-center rounded-full border font-display text-lg italic",
-          light ? "border-gold-light/60 text-gold-light" : "border-gold/50 text-gold-dark"
-        )}
+        className="rounded-full h-15 w-15"
       >
         <img src={heroImages.logo} alt="" />
       </span>
