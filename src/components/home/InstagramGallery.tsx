@@ -12,8 +12,14 @@ export function InstagramGallery() {
     <section className="bg-ivory py-24 sm:py-32">
       <Container>
         <div className="flex flex-col items-center gap-3 text-center">
-          <SectionHeading eyebrow="Follow The Journey" title="@luxe_aesthetics.spa.saloon
- on Instagram" className="mx-auto" />
+          {/* <SectionHeading eyebrow="Follow The Journey" title="@luxe_aesthetics.spa.saloon
+ on Instagram" className="mx-auto"/> */}
+           <SectionHeading
+  eyebrow="Follow The Journey"
+  title="@luxe_aesthetics.spa.saloon on Instagram"
+  className="mx-auto"
+  titleClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+/>
         </div>
 
         <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
