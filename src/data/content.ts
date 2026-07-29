@@ -1,14 +1,15 @@
 import { stock } from "./images";
-import { heroImages } from "./images"
+import { heroImages } from "./images";
+import { reviewImages } from "./images"
 
 export const testimonials = [
   {
-    name: "Adaeze O.",
+    name: "Faithful Iwuanyanwu",
     role: "Google Review",
     rating: 5,
     quote:
-      "The moment you walk in, you feel like royalty. My facial was incredible and the staff explained every step. This is luxury done right in Port Harcourt.",
-    image: stock.portraitsFemale[0],
+      "Luxe Aesthetics is best Spa in Port harcourt. The environment is serene with top notch professional staff that delivers excellent services. I will recommend and always visit again and again.",
+    image: reviewImages.review1,
     source: "Google",
   },
   {
@@ -21,39 +22,39 @@ export const testimonials = [
     source: "TripAdvisor",
   },
   {
-    name: "Ifeoma K.",
+    name: "Gbless Esere",
     role: "Facebook Review",
     rating: 5,
     quote:
-      "Being open 24 hours is a game changer for my schedule. I booked a late massage after a flight and it was pure bliss. Highly recommend Luxe Aesthetics.",
-    image: stock.portraitsFemale[1],
+      "Top notch services with lots of love.",
+    image: reviewImages.review2,
     source: "Facebook",
   },
   {
-    name: "Emeka C.",
+    name: "Charming Oke.",
     role: "Google Review",
     rating: 5,
     quote:
-      "As a man, I was nervous about walking into a spa, but the team made me feel completely comfortable. My skin has never looked better.",
-    image: stock.portraitsMale[1],
+      "So I got in this spa outfit in Port Harcourt for a facial and massage session, sincerely I got more than what I expected. The facials was 10/10 minus nothing. Massage session was great 👍.",
+    image: reviewImages.review3,
     source: "Google",
   },
   {
-    name: "Blessing A.",
+    name: "Chapdee",
     role: "Google Review",
     rating: 5,
     quote:
-      "The microblading result is so natural, people ask if they're my real brows! The attention to detail here is unmatched.",
-    image: stock.portraitsFemale[2],
+      "It was an easy going experience, from examining my face and suggesting a facial treatment. The result was pretty good and the staffs were professional with their work, you should give them a try.",
+    image: reviewImages.review4,
     source: "Google",
   },
   {
-    name: "Great I.",
-    role: "TripAdvisor Review",
+    name: "Joan Ebere",
+    role: "Google Review",
     rating: 5,
     quote:
-      "Warri finally has a world-class wellness destination. The steam room and hydrotherapy pool alone are worth the visit.",
-    image: stock.portraitsMale[2],
+      "Luxe Aesthetics Spa exceeded my expectations. The Botox and dermal fillers gave me a youthful look. The spa’s calming atmosphere and skilled professionals make it the best place for cosmetic treatments. Truly a top-tier experience..",
+    image: reviewImages.review5,
     source: "TripAdvisor",
   },
 ];

@@ -21,6 +21,19 @@ export const heroImages = {
   blog: "/images/blog-hero.jpg",
 };
 
+
+export const reviewImages ={
+  review1:"/images/review1.jpg",
+  review2:"/images/review2.jpg",
+  review3:"/images/review3.png",
+  review4:"/images/review4.png",
+  review5:"/images/reveiw5.png",
+  review6:"/images/.jpg",
+}
+
+
+
+
 export const founderPortrait = "/images/nobg.png";
 export const facilityReception = "/images/facility-reception.jpg";
 
