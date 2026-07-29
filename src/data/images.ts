@@ -11,7 +11,7 @@ export const heroImages = {
   my_home: "/images/vid.mp4",
   samp: "/images/samp.mp4",
   new:"/images/hero-bg.mp4",
-  logo:"/images/logo_final.png",
+  logo:"/images/logo_transparent(1).png",
   bbl:"/images/luxe-before-after.png",
   check: "/images/result.mp4",
   massage: "/images/massage.mp4",

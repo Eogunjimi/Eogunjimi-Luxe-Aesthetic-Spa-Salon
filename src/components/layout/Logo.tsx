@@ -5,15 +5,15 @@ export function Logo({ light = false, className }: { light?: boolean; className?
   return (
     <Link to="/" className={cn("flex items-center gap-2.5 shrink-0", className)} aria-label="Luxe Aesthetics Spa Saloon home">
       <span
-        className="rounded-full h-15 w-15"
+        className="rounded-full h-10 w-15"
       >
         <img src={heroImages.logo} alt="" />
       </span>
       <span className="leading-tight">
         <span
           className={cn(
-            "block font-display text-[19px] italic tracking-wide",
-            light ? "text-ivory" : "text-ink"
+            "block font-display text-[19px] italic tracking-wide [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]", 
+            light ? "text-ivory" : "text-ink" 
           )}
         >
           Luxe Aesthetics
