@@ -62,7 +62,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl text-[40px] font-medium leading-[1.08] text-ivory sm:text-[56px] lg:text-[66px] text-center"
-        >
+        > 
           Luxury Beauty, Medical Aesthetics
            {/* &amp; Wellness{" "}
           <span className="text-gradient-gold font-display italic">— All Under One Roof.</span> */}
