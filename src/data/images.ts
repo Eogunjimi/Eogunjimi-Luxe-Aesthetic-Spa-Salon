@@ -31,6 +31,16 @@ export const reviewImages ={
   review6:"/images/.jpg",
 }
 
+export const facilityImages = {
+reception:"/images/reception.jpg",
+treatment_Rooms:"/images/teatmentroom.jpg",
+waiting_lounge:"/images/waitinglounge.jpg",
+steam_room:"/images/steemroom.jpg",
+facials:"/images/facial1.png",
+spa_rooms:"/images/sparoom_1.jpg",
+salon:"/images/salon.jpg",
+// hydrotherapy
+}
 
 
 

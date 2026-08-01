@@ -1,6 +1,7 @@
 import { stock } from "./images";
 import { heroImages } from "./images";
 import { reviewImages } from "./images"
+import { facilityImages } from "./images";
 
 export const testimonials = [
   {
@@ -135,13 +136,13 @@ export const experienceSteps = [
 ];
 
 export const facilityShowcase = [
-  { title: "Reception", image: stock.facilityLounge[0] },
-  { title: "Treatment Rooms", image: stock.medicalAesthetics[1] },
-  { title: "Spa Rooms", image: stock.massage[2] },
-  { title: "Facial Rooms", image: stock.facials[1] },
-  { title: "Salon", image: stock.hair[2] },
-  { title: "Waiting Lounge", image: stock.wellness[3] },
-  { title: "Steam Room", image: stock.facilityLounge[1] },
+  { title: "Reception", image: facilityImages.reception},
+  { title: "Treatment Rooms", image: facilityImages.treatment_Rooms },
+  { title: "Spa Rooms", image: facilityImages.spa_rooms},
+  { title: "Facial Rooms", image: facilityImages.facials },
+  { title: "Salon", image: facilityImages.salon},
+  { title: "Waiting Lounge", image: facilityImages.waiting_lounge},
+  { title: "Steam Room", image: facilityImages.steam_room },
   { title: "Hydrotherapy", image: stock.facilityLounge[2] },
 ];
 
