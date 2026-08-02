@@ -42,6 +42,15 @@ salon:"/images/salon.jpg",
 // hydrotherapy
 }
 
+export const treatmentImages = {
+  ama:"/images/ama.jpg",
+  salon:"/images/salon_1.jpg",
+  massage:"/images/massage.png",
+  body:"/images/body_2.webp"
+}
+
+
+
 
 
 export const founderPortrait = "/images/nobg.png";

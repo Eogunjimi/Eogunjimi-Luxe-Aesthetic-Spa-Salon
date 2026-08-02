@@ -15,6 +15,12 @@ import {
 } from "lucide-react";
 import { stock } from "./images";
 
+import { treatmentImages } from "./images"
+
+
+
+
+
 export type Treatment = {
   slug: string;
   name: string;
@@ -30,6 +36,14 @@ export type Treatment = {
   seoTitle: string;
   seoDescription: string;
 };
+
+
+
+
+
+
+
+
 
 export const treatments: Treatment[] = [
   {
@@ -326,7 +340,7 @@ export const treatmentCategories = [
     title: "Advanced Medical Aesthetics",
     description: "Skin rejuvenation, skin tag removal & clinical treatments for lasting results.",
     icon: Droplet,
-    image: stock.medicalAesthetics[1],
+    image: treatmentImages.ama,
     slugs: ["skin-rejuvenation", "skin-tag-removal"],
   },
   {
@@ -334,7 +348,7 @@ export const treatmentCategories = [
     title: "Luxury Spa",
     description: "Massage therapy, hydrotherapy and rituals designed for total relaxation.",
     icon: Waves,
-    image: stock.massage[1],
+    image: treatmentImages.massage,
     slugs: ["massage-therapy"],
   },
   {
@@ -350,7 +364,7 @@ export const treatmentCategories = [
     title: "Beauty Salon",
     description: "Hair, nails, lashes, brows & more from Port Harcourt's finest artists.",
     icon: Scissors,
-    image: stock.hair[3],
+    image: treatmentImages.salon,
     slugs: ["hair-salon", "nail-care", "lash-extensions", "microblading"],
   },
   {
@@ -358,7 +372,7 @@ export const treatmentCategories = [
     title: "Body & Wellness",
     description: "Non-surgical fat melting, body sculpting, IV therapy & weight management.",
     icon: Flame,
-    image: stock.bodyContouring[2],
+    image:  treatmentImages.body,
     slugs: ["non-surgical-fat-melting", "body-contouring"],
   },
 ];
