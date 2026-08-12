@@ -356,7 +356,7 @@ export const treatmentCategories = [
     title: "Skin Rejuvenation",
     description: "Signature facials and glow-boosting treatments for radiant, healthy skin.",
     icon: Sparkles,
-    image: stock.facials[2],
+    image: treatmentImages.skin,
     slugs: ["facials", "skin-rejuvenation"],
   },
   {

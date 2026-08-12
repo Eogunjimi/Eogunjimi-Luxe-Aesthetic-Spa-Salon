@@ -13,6 +13,7 @@ export const heroImages = {
   new:"/images/hero-bg.mp4",
   logo:"/images/logo_transparent(1).png",
   bbl:"/images/luxe-before-after.png",
+  bnf:"/images/before_after_medspa.png",
   check: "/images/result.mp4",
   massage: "/images/massage.mp4",
   about: "/images/about-hero.jpg",
@@ -46,7 +47,8 @@ export const treatmentImages = {
   ama:"/images/ama.jpg",
   salon:"/images/salon_1.jpg",
   massage:"/images/massage.png",
-  body:"/images/body_2.webp"
+  body:"/images/body_2.webp",
+  skin:"/images/skinrej.png"
 }
 
 
