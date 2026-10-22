@@ -77,7 +77,7 @@ export function Hero() {
           <a
             href={whatsappLink()}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm font-medium text-cream/80 transition-colors hover:text-gold-light"
           >
             <MessageCircle size={18} />

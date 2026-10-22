@@ -9,6 +9,7 @@ import { FounderSection } from "../components/home/FounderSection";
 import { ConsultationCTA } from "../components/home/ConsultationCTA";
 import { heroImages, facilityReception } from "../data/images";
 import { coreValues, teamMembers } from "../data/content";
+import { breadcrumbSchema } from "../utils/schema";
 
 const awards = [
   { title: "#1 Spa — TripAdvisor", detail: "Ranked the leading spa destination in Port Harcourt." },
@@ -17,10 +18,12 @@ const awards = [
 ];
 
 export default function About() {
-  useSeo(
-    "About Us | Luxe Aesthetics Spa Saloon, Port Harcourt & Warri",
-    "Discover the story, mission and team behind Luxe Aesthetics Spa Saloon — Port Harcourt & Warri's leading luxury med spa and beauty destination."
-  );
+  useSeo({
+    title: "About Us | Luxe Aesthetics Spa Saloon, Port Harcourt & Warri",
+    description: "Discover the story, mission and team behind Luxe Aesthetics Spa Saloon — Port Harcourt & Warri's leading luxury med spa and beauty destination.",
+    path: "/about",
+    schema: [breadcrumbSchema([{"name":"Home","path":"/"},{"name":"About","path":"/about"}])],
+  });
 
   return (
     <>

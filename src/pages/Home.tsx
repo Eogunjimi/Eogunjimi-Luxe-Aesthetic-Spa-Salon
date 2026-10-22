@@ -13,12 +13,20 @@ import { ConsultationCTA } from "../components/home/ConsultationCTA";
 import { FAQSection } from "../components/home/FAQSection";
 import { InstagramGallery } from "../components/home/InstagramGallery";
 import { FinalCTA } from "../components/home/FinalCTA";
+import { faqs } from "../data/content";
+import { faqSchema } from "../utils/schema";
 
 export default function Home() {
-  useSeo(
-    "Luxe Aesthetics Spa Saloon | Luxury Med Spa in Port Harcourt & Warri",
-    "Port Harcourt & Warri's premier luxury med spa. Medical aesthetics, body contouring, facials, massage, hair, nails & wellness — open 24 hours. Book now."
-  );
+  useSeo({
+    title:
+      "Luxe Aesthetics Spa Saloon | Luxury Med Spa in Port Harcourt & Warri",
+    description:
+      "Port Harcourt & Warri's premier luxury med spa. Medical aesthetics, body contouring, facials, massage, hair, nails & wellness — open 24 hours. Book now.",
+    path: "/",
+    image: "/images/salon_1.jpg",
+    type: "website",
+    schema: [faqSchema(faqs)],
+  });
 
   return (
     <>

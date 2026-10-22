@@ -31,13 +31,23 @@ export function Footer() {
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-cream/70 transition-colors hover:border-gold hover:text-gold-light"
                 >
                   <Icon width={16} height={16} />
                 </a>
               ))}
+              <a
+                href={business.googleBusinessProfile}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Leave a Google review"
+                title="Leave a Google review"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-[11px] font-semibold text-cream/70 transition-colors hover:border-gold hover:text-gold-light"
+              >
+                G
+              </a>
             </div>
           </div>
 
@@ -98,7 +108,7 @@ export function Footer() {
             <a
               href={whatsappLink()}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-light hover:text-gold"
             >
               Message on WhatsApp →

@@ -9,12 +9,15 @@ import { Button } from "../components/ui/Button";
 import { ReviewsSection } from "../components/home/ReviewsSection";
 import { heroImages } from "../data/images";
 import { beforeAfterGallery, beforeAfterCategories } from "../data/content";
+import { breadcrumbSchema } from "../utils/schema";
 
 export default function BeforeAfter() {
-  useSeo(
-    "Before & After Gallery | Luxe Aesthetics Spa Saloon",
-    "See real transformations from Luxe Aesthetics Spa Saloon clients — fat melting, body sculpting, facials, skin rejuvenation and more. Book your consultation."
-  );
+  useSeo({
+    title: "Before & After Gallery | Luxe Aesthetics Spa Saloon",
+    description: "See real transformations from Luxe Aesthetics Spa Saloon clients — fat melting, body sculpting, facials, skin rejuvenation and more. Book your consultation.",
+    path: "/before-after",
+    schema: [breadcrumbSchema([{"name":"Home","path":"/"},{"name":"Before & After","path":"/before-after"}])],
+  });
 
   const [active, setActive] = useState("All");
   const filtered =

@@ -5,15 +5,44 @@ import { Container } from "../components/ui/Container";
 import { Reveal } from "../components/ui/Reveal";
 import { Button } from "../components/ui/Button";
 import { blogPosts } from "../data/content";
+import { articleSchema, breadcrumbSchema } from "../utils/schema";
+
+function parseDate(dateStr: string): string {
+  // Accepts "July 2026" — returns first of month as ISO date.
+  const d = new Date(Date.parse(`${dateStr} 1`));
+  if (Number.isNaN(d.getTime())) return new Date().toISOString().slice(0, 10);
+  return d.toISOString().slice(0, 10);
+}
 
 export default function BlogPost() {
   const { slug = "" } = useParams();
   const post = blogPosts.find((p) => p.slug === slug);
+  const path = `/blog/${slug}`;
 
-  useSeo(
-    post ? `${post.title} | Luxe Aesthetics Journal` : "Luxe Aesthetics Journal",
-    post?.excerpt ?? "Read the latest wellness and beauty insights from Luxe Aesthetics Spa Saloon."
-  );
+  useSeo({
+    title: post ? `${post.title} | Luxe Aesthetics Journal` : "Luxe Aesthetics Journal",
+    description: post?.excerpt ?? "Read the latest wellness and beauty insights from Luxe Aesthetics Spa Saloon.",
+    path,
+    image: post?.image,
+    type: "article",
+    schema: post
+      ? [
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path },
+          ]),
+          articleSchema({
+            headline: post.title,
+            description: post.excerpt,
+            path,
+            image: post.image,
+            datePublished: parseDate(post.date),
+            authorName: "Dr. Eve Ejaife",
+          }),
+        ]
+      : [],
+  });
 
   if (!post) return <Navigate to="/blog" replace />;
 

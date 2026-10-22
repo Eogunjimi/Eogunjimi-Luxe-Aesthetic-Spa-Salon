@@ -68,8 +68,8 @@ export const stock = {
   facials: [
     "https://images.pexels.com/photos/12115040/pexels-photo-12115040.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1200",
     "https://images.pexels.com/photos/3764552/pexels-photo-3764552.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1200",
-    "https://www.instagram.com/p/DJHA5Dqs17J",
     "https://images.pexels.com/photos/3985338/pexels-photo-3985338.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1200",
+    "https://images.pexels.com/photos/6621134/pexels-photo-6621134.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1200",
   ],
   hair: [
     "https://images.pexels.com/photos/8834018/pexels-photo-8834018.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1200",

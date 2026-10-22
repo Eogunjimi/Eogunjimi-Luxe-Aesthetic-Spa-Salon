@@ -8,17 +8,42 @@ import { Button } from "../components/ui/Button";
 import { StarRating } from "../components/ui/StarRating";
 import { FAQSection } from "../components/home/FAQSection";
 import { getTreatmentBySlug, treatments } from "../data/treatments";
-import { testimonials } from "../data/content";
+import { faqs, testimonials } from "../data/content";
 import { whatsappLink } from "../data/business";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "../utils/schema";
 
 export default function ServiceDetail() {
   const { slug = "" } = useParams();
   const treatment = getTreatmentBySlug(slug);
+  const path = `/treatments/${slug}`;
 
-  useSeo(
-    treatment?.seoTitle ?? "Treatments | Luxe Aesthetics Spa Saloon",
-    treatment?.seoDescription ?? "Explore luxury treatments at Luxe Aesthetics Spa Saloon."
-  );
+  useSeo({
+    title: treatment?.seoTitle ?? "Treatments | Luxe Aesthetics Spa Saloon",
+    description:
+      treatment?.seoDescription ?? "Explore luxury treatments at Luxe Aesthetics Spa Saloon.",
+    path,
+    image: treatment?.image,
+    type: "website",
+    schema: [
+      breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Treatments", path: "/treatments" },
+        { name: treatment?.name ?? "Treatment", path },
+      ]),
+      ...(treatment
+        ? [
+            serviceSchema({
+              name: treatment.name,
+              description: treatment.description,
+              path,
+              category: treatment.category,
+              image: treatment.image,
+            }),
+            faqSchema(faqs),
+          ]
+        : []),
+    ],
+  });
 
   if (!treatment) return <Navigate to="/treatments" replace />;
 

@@ -27,6 +27,8 @@ export const business = {
     },
   ],
   hours: "Open 24 Hours, Every Day",
+  // Google Business Profile — "Share" link from your GBP dashboard.
+  googleBusinessProfile: "https://share.google/kSkwE0RcMPYe3OYXP",
   social: {
     instagram: "https://www.instagram.com/luxe_aesthetics.spa.saloon/?hl=en",
     facebook: "https://www.facebook.com/luxeaestheticspasaloon",

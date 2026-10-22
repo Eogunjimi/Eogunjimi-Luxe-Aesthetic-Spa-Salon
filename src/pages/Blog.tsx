@@ -9,14 +9,17 @@ import { Button } from "../components/ui/Button";
 import { InstagramGallery } from "../components/home/InstagramGallery";
 import { heroImages } from "../data/images";
 import { blogCategories, blogPosts } from "../data/content";
+import { breadcrumbSchema } from "../utils/schema";
 
 const topics = ["Skincare", "Body Contouring", "Facials", "Hair Care", "Wellness", "Anti-Aging"];
 
 export default function Blog() {
-  useSeo(
-    "Luxury Wellness & Aesthetic Journal | Luxe Aesthetics Spa Saloon",
-    "Expert insights on skincare, body contouring, wellness and beauty from Luxe Aesthetics Spa Saloon in Port Harcourt & Warri."
-  );
+  useSeo({
+    title: "Luxury Wellness & Aesthetic Journal | Luxe Aesthetics Spa Saloon",
+    description: "Expert insights on skincare, body contouring, wellness and beauty from Luxe Aesthetics Spa Saloon in Port Harcourt & Warri.",
+    path: "/blog",
+    schema: [breadcrumbSchema([{"name":"Home","path":"/"},{"name":"Blog","path":"/blog"}])],
+  });
 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");

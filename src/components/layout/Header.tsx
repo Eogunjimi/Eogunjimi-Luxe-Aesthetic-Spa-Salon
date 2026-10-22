@@ -61,7 +61,7 @@ export function Header() {
           <a
             href={whatsappLink()}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-colors hover:border-[#25D366] hover:text-[#25D366]"
             aria-label="WhatsApp"
           >

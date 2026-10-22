@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { Clock, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import { useSeo } from "../hooks/useSeo";
 import { Container } from "../components/ui/Container";
@@ -10,16 +10,56 @@ import { InstagramIcon, FacebookIcon } from "../components/ui/SocialIcons";
 import { heroImages } from "../data/images";
 import { business, whatsappLink } from "../data/business";
 import { treatments } from "../data/treatments";
+import { breadcrumbSchema } from "../utils/schema";
 
-const timeSlots = ["Morning (8am - 12pm)", "Afternoon (12pm - 4pm)", "Evening (4pm - 8pm)", "Night (8pm - 12am)", "Late Night / Early Morning"];
+const timeSlots = [
+  "Morning (8am - 12pm)",
+  "Afternoon (12pm - 4pm)",
+  "Evening (4pm - 8pm)",
+  "Night (8pm - 12am)",
+  "Late Night / Early Morning",
+];
 
 export default function Contact() {
-  useSeo(
-    "Book an Appointment | Luxe Aesthetics Spa Saloon",
-    "Book your appointment or consultation at Luxe Aesthetics Spa Saloon in Port Harcourt or Warri. Call, WhatsApp or fill our luxury booking form — open 24 hours."
-  );
+  useSeo({
+    title: "Book an Appointment | Luxe Aesthetics Spa Saloon",
+    description:
+      "Book your appointment or consultation at Luxe Aesthetics Spa Saloon in Port Harcourt or Warri. Call, WhatsApp or fill our booking form — open 24 hours.",
+    path: "/contact",
+    schema: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])],
+  });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    treatment: "",
+    date: "",
+    time: "",
+    message: "",
+  });
+
+  function update<K extends keyof typeof form>(key: K, value: string) {
+    setForm((f) => ({ ...f, [key]: value }));
+  }
+
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    // Open WhatsApp with a pre-filled booking message so the team receives it instantly.
+    const lines = [
+      `Hi Luxe Aesthetics, I'd like to book an appointment.`,
+      ``,
+      `*Name:* ${form.name}`,
+      `*Phone:* ${form.phone}`,
+      form.email ? `*Email:* ${form.email}` : null,
+      form.treatment ? `*Treatment:* ${form.treatment}` : null,
+      form.date ? `*Preferred date:* ${form.date}` : null,
+      form.time ? `*Preferred time:* ${form.time}` : null,
+      form.message ? `*Message:* ${form.message}` : null,
+    ].filter(Boolean);
+    const url = whatsappLink(lines.join("\n"));
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 
   return (
     <>
@@ -37,69 +77,96 @@ export default function Contact() {
             <Reveal className="lg:col-span-3">
               <div className="rounded-[32px] bg-white p-8 shadow-luxe-sm ring-1 ring-ink/5 sm:p-12">
                 <SectionHeading align="left" eyebrow="Booking Form" title="Reserve Your Appointment" className="mx-0" />
+                <p className="mt-3 max-w-lg text-sm text-ink/55">
+                  Fill in your details and tap submit — your request will open in WhatsApp so our concierge can confirm
+                  your appointment instantly. We're open 24/7.
+                </p>
 
-                {submitted ? (
-                  <div className="mt-10 rounded-2xl bg-cream/60 p-8 text-center">
-                    <p className="text-lg font-medium text-ink">Thank you! 🎉</p>
-                    <p className="mt-2 text-sm text-ink/60">
-                      Your request has been received. Our team will reach out shortly to confirm your appointment.
+                <form onSubmit={onSubmit} className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <Field label="Full Name" required>
+                    <input
+                      required
+                      type="text"
+                      placeholder="Jane Doe"
+                      value={form.name}
+                      onChange={(e) => update("name", e.target.value)}
+                      className={inputClass}
+                    />
+                  </Field>
+                  <Field label="Phone Number" required>
+                    <input
+                      required
+                      type="tel"
+                      placeholder="+234 800 000 0000"
+                      value={form.phone}
+                      onChange={(e) => update("phone", e.target.value)}
+                      className={inputClass}
+                    />
+                  </Field>
+                  <Field label="Email Address">
+                    <input
+                      type="email"
+                      placeholder="jane@email.com"
+                      value={form.email}
+                      onChange={(e) => update("email", e.target.value)}
+                      className={inputClass}
+                    />
+                  </Field>
+                  <Field label="Treatment Interested In">
+                    <select
+                      className={inputClass}
+                      value={form.treatment}
+                      onChange={(e) => update("treatment", e.target.value)}
+                    >
+                      <option value="">Select a treatment</option>
+                      {treatments.map((t) => (
+                        <option key={t.slug} value={t.name}>
+                          {t.name}
+                        </option>
+                      ))}
+                    </select>
+                  </Field>
+                  <Field label="Preferred Date">
+                    <input
+                      type="date"
+                      value={form.date}
+                      onChange={(e) => update("date", e.target.value)}
+                      className={inputClass}
+                    />
+                  </Field>
+                  <Field label="Preferred Time">
+                    <select
+                      className={inputClass}
+                      value={form.time}
+                      onChange={(e) => update("time", e.target.value)}
+                    >
+                      <option value="">Select a time</option>
+                      {timeSlots.map((slot) => (
+                        <option key={slot} value={slot}>
+                          {slot}
+                        </option>
+                      ))}
+                    </select>
+                  </Field>
+                  <Field label="Message" full>
+                    <textarea
+                      rows={4}
+                      placeholder="Tell us about your goals..."
+                      value={form.message}
+                      onChange={(e) => update("message", e.target.value)}
+                      className={inputClass}
+                    />
+                  </Field>
+
+                  <div className="sm:col-span-2">
+                    <Button type="submit" size="lg" className="w-full sm:w-auto" icon={<Send size={15} />}>
+                      Send Booking Request via WhatsApp
+                    </Button>
+                    <p className="mt-3 text-xs text-ink/45">
+                      Tapping submit opens WhatsApp with your details pre-filled — no account needed.
                     </p>
                   </div>
-                ) : (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSubmitted(true);
-                    }}
-                    className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2"
-                  >
-                    <Field label="Full Name" required>
-                      <input required type="text" placeholder="Jane Doe" className={inputClass} />
-                    </Field>
-                    <Field label="Phone Number" required>
-                      <input required type="tel" placeholder="+234 800 000 0000" className={inputClass} />
-                    </Field>
-                    <Field label="Email Address" required>
-                      <input required type="email" placeholder="jane@email.com" className={inputClass} />
-                    </Field>
-                    <Field label="Treatment Interested In">
-                      <select className={inputClass} defaultValue="">
-                        <option value="" disabled>
-                          Select a treatment
-                        </option>
-                        {treatments.map((t) => (
-                          <option key={t.slug} value={t.name}>
-                            {t.name}
-                          </option>
-                        ))}
-                      </select>
-                    </Field>
-                    <Field label="Preferred Date">
-                      <input type="date" className={inputClass} />
-                    </Field>
-                    <Field label="Preferred Time">
-                      <select className={inputClass} defaultValue="">
-                        <option value="" disabled>
-                          Select a time
-                        </option>
-                        {timeSlots.map((slot) => (
-                          <option key={slot} value={slot}>
-                            {slot}
-                          </option>
-                        ))}
-                      </select>
-                    </Field>
-                    <Field label="Message" full>
-                      <textarea rows={4} placeholder="Tell us about your goals..." className={inputClass} />
-                    </Field>
-
-                    <div className="sm:col-span-2">
-                      <Button type="submit" size="lg" className="w-full sm:w-auto" icon={<Send size={15} />}>
-                        Submit Booking Request
-                      </Button>
-                    </div>
-                  </form>
-                )}
+                </form>
               </div>
             </Reveal>
 
@@ -113,8 +180,22 @@ export default function Contact() {
                     <a href={business.phoneHref} className="flex items-center gap-3 text-cream/80 hover:text-gold-light">
                       <Phone size={17} className="text-gold-light" /> {business.phone}
                     </a>
-                    <a href={`mailto:${business.email}`} className="flex items-center gap-3 text-cream/80 hover:text-gold-light">
+                    <a
+                      href={`mailto:${business.email}`}
+                      className="flex items-center gap-3 text-cream/80 hover:text-gold-light"
+                    >
                       <Mail size={17} className="text-gold-light" /> {business.email}
+                    </a>
+                    <a
+                      href={business.googleBusinessProfile}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-cream/80 hover:text-gold-light"
+                    >
+                      <span className="flex h-[17px] w-[17px] items-center justify-center rounded-sm bg-gold-light text-[10px] font-bold text-ink">
+                        G
+                      </span>
+                      View / Review us on Google
                     </a>
                     <div className="flex items-center gap-3 text-cream/80">
                       <Clock size={17} className="text-gold-light" /> {business.hours}
@@ -128,7 +209,8 @@ export default function Contact() {
                     <a
                       href={business.social.instagram}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
                       className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream/70 hover:border-gold-light hover:text-gold-light"
                     >
                       <InstagramIcon width={17} height={17} />
@@ -136,7 +218,8 @@ export default function Contact() {
                     <a
                       href={business.social.facebook}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
                       className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream/70 hover:border-gold-light hover:text-gold-light"
                     >
                       <FacebookIcon width={17} height={17} />
@@ -155,7 +238,7 @@ export default function Contact() {
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.mapQuery)}`}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="mt-4 inline-block text-xs font-semibold uppercase tracking-wide text-gold-dark hover:text-gold"
                     >
                       Get Directions →
@@ -183,7 +266,9 @@ export default function Contact() {
                     loading="lazy"
                   />
                   <div className="bg-white p-5">
-                    <p className="font-medium text-ink">{loc.city}, {loc.state}</p>
+                    <p className="font-medium text-ink">
+                      {loc.city}, {loc.state}
+                    </p>
                     <p className="text-sm text-ink/55">{loc.address}</p>
                   </div>
                 </div>

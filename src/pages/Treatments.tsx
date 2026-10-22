@@ -11,14 +11,17 @@ import { ExperienceTimeline } from "../components/home/ExperienceTimeline";
 import { FinalCTA } from "../components/home/FinalCTA";
 import { heroImages } from "../data/images";
 import { treatments } from "../data/treatments";
+import { breadcrumbSchema } from "../utils/schema";
 
 const categories = ["All", ...Array.from(new Set(treatments.map((t) => t.category)))];
 
 export default function Treatments() {
-  useSeo(
-    "Treatments & Services | Luxe Aesthetics Spa Saloon",
-    "Explore medical aesthetics, spa, salon, body contouring & wellness treatments at Luxe Aesthetics Spa Saloon in Port Harcourt & Warri. Book your appointment today."
-  );
+  useSeo({
+    title: "Treatments & Services | Luxe Aesthetics Spa Saloon",
+    description: "Explore medical aesthetics, spa, salon, body contouring & wellness treatments at Luxe Aesthetics Spa Saloon in Port Harcourt & Warri. Book your appointment today.",
+    path: "/treatments",
+    schema: [breadcrumbSchema([{"name":"Home","path":"/"},{"name":"Treatments","path":"/treatments"}])],
+  });
 
   const [active, setActive] = useState("All");
   const filtered = active === "All" ? treatments : treatments.filter((t) => t.category === active);

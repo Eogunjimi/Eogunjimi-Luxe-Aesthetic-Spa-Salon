@@ -28,7 +28,7 @@ export function InstagramGallery() {
               <a
                 href={business.social.instagram}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group relative block aspect-square overflow-hidden rounded-2xl"
               >
                 <img src={src} alt="Luxe Aesthetics Instagram post" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />

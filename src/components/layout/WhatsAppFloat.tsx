@@ -6,7 +6,7 @@ export function WhatsAppFloat() {
     <a
       href={whatsappLink()}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
       className="group fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-4 text-white shadow-luxe transition-all duration-300 hover:pr-6 sm:bottom-8 sm:right-8"
     >
